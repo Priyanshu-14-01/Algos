@@ -1,0 +1,133 @@
+Test Cases for Dijkstra's Algorithm
+=====================================
+
+Test Case 1: Simple Connected Graph
+Input:
+4 5 1
+1 2 4
+1 3 2
+2 3 1
+2 4 5
+3 4 3
+
+Expected Output:
+Node 1: 0
+Node 2: 3
+Node 3: 2
+Node 4: 5
+
+Explanation: Shortest paths from node 1:
+- 1 to 1: 0
+- 1 to 2: 1->3->2 = 2+1 = 3
+- 1 to 3: 1->3 = 2
+- 1 to 4: 1->3->4 = 2+3 = 5
+
+Test Case 2: Graph with Disconnected Component
+Input:
+5 3 1
+1 2 3
+2 3 2
+4 5 1
+
+Expected Output:
+Node 1: 0
+Node 2: 3
+Node 3: 5
+Node 4: INF
+Node 5: INF
+
+Explanation: Nodes 4 and 5 are not reachable from node 1.
+
+Test Case 3: Single Node
+Input:
+1 0 1
+
+Expected Output:
+Node 1: 0
+
+Explanation: Only one node, distance to itself is 0.
+
+Test Case 4: Linear Graph
+Input:
+4 3 1
+1 2 1
+2 3 2
+3 4 3
+
+Expected Output:
+Node 1: 0
+Node 2: 1
+Node 3: 3
+Node 4: 6
+
+Explanation: Linear path 1->2->3->4 with cumulative distances.
+
+Test Case 5: Graph with Multiple Paths
+Input:
+6 8 1
+1 2 2
+1 3 4
+2 3 1
+2 4 7
+3 5 3
+4 5 2
+4 6 1
+5 6 5
+
+Expected Output:
+Node 1: 0
+Node 2: 2
+Node 3: 3
+Node 4: 8
+Node 5: 6
+Node 6: 9
+
+Explanation: Multiple paths exist, algorithm finds shortest ones.
+
+Test Case 6: Dense Graph
+Input:
+3 3 1
+1 2 1
+1 3 1
+2 3 1
+
+Expected Output:
+Node 1: 0
+Node 2: 1
+Node 3: 1
+
+Explanation: Complete graph with equal weights.
+
+Test Case 7: Large Weights
+Input:
+3 2 1
+1 2 1000
+2 3 2000
+
+Expected Output:
+Node 1: 0
+Node 2: 1000
+Node 3: 3000
+
+Explanation: Tests with large edge weights.
+
+Test Case 8: Self Loop (if supported)
+Input:
+2 2 1
+1 1 5
+1 2 3
+
+Expected Output:
+Node 1: 0
+Node 2: 3
+
+Explanation: Self loop should not affect shortest path.
+
+How to run tests:
+1. Compile: g++ -o dijkstra Dijkstra.cpp
+2. Run: ./dijkstra < test_input.txt
+3. Compare output with expected results
+
+Input format:
+- First line: n m source (nodes, edges, source node)
+- Next m lines: u v w (edge from u to v with weight w)
