@@ -1,0 +1,84 @@
+Test Cases for Lazy Propagation Segment Tree
+=============================================
+
+Test Case 1: Basic Range Update and Query
+Input Array: [1, 2, 3, 4, 5, 6, 7, 8]
+Operations:
+1. Query range [0, 7] → Expected: 36
+2. Query range [2, 5] → Expected: 18
+3. Update range [1, 4] by adding 10 → Array becomes [1, 12, 13, 14, 15, 6, 7, 8]
+4. Query range [0, 7] → Expected: 76
+5. Query range [2, 5] → Expected: 48
+6. Query range [0, 1] → Expected: 13
+
+Test Case 2: Multiple Overlapping Range Updates
+Input Array: [0, 0, 0, 0, 0, 0, 0, 0]
+Operations:
+1. Update range [0, 3] by adding 5 → Array becomes [5, 5, 5, 5, 0, 0, 0, 0]
+2. Update range [2, 5] by adding 3 → Array becomes [5, 5, 8, 8, 3, 3, 0, 0]
+3. Update range [1, 6] by adding 2 → Array becomes [5, 7, 10, 10, 5, 5, 2, 0]
+4. Query range [0, 7] → Expected: 44
+5. Query range [2, 4] → Expected: 25
+
+Test Case 3: Point Updates with Range Updates
+Input Array: [10, 20, 30, 40, 50]
+Operations:
+1. Query range [0, 4] → Expected: 150
+2. Update range [1, 3] by adding 5 → Array becomes [10, 25, 35, 45, 50]
+3. Point update: set index 2 to 100 → Array becomes [10, 25, 100, 45, 50]
+4. Query range [0, 4] → Expected: 230
+5. Query range [1, 3] → Expected: 170
+
+Test Case 4: Large Range Updates
+Input Array: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Operations:
+1. Update entire array [0, 9] by adding 100 → Array becomes [101, 101, 101, 101, 101, 101, 101, 101, 101, 101]
+2. Query range [0, 9] → Expected: 1010
+3. Update range [0, 4] by adding 50 → Array becomes [151, 151, 151, 151, 151, 101, 101, 101, 101, 101]
+4. Query range [0, 9] → Expected: 1260
+5. Query range [5, 9] → Expected: 505
+
+Test Case 5: Single Element Array
+Input Array: [42]
+Operations:
+1. Query range [0, 0] → Expected: 42
+2. Update range [0, 0] by adding 8 → Array becomes [50]
+3. Query range [0, 0] → Expected: 50
+4. Point update: set index 0 to 100 → Array becomes [100]
+5. Query range [0, 0] → Expected: 100
+
+Test Case 6: Edge Cases
+Input Array: [1, 2, 3]
+Operations:
+1. Update range [0, 0] by adding 10 → Array becomes [11, 2, 3]
+2. Update range [2, 2] by adding 20 → Array becomes [11, 2, 23]
+3. Query range [0, 2] → Expected: 36
+4. Query range [1, 1] → Expected: 2
+5. Update range [1, 1] by adding 5 → Array becomes [11, 7, 23]
+6. Query range [0, 2] → Expected: 41
+
+Expected Output Format:
+======================
+Initial array: 1 2 3 4 5 6 7 8
+Sum of range [0, 7]: 36
+Sum of range [2, 5]: 18
+
+Adding 10 to range [1, 4]...
+Sum of range [0, 7] after update: 76
+Sum of range [2, 5] after update: 48
+Sum of range [0, 1] after update: 13
+
+Adding 5 to range [3, 6]...
+Sum of range [0, 7] after second update: 96
+Sum of range [3, 6] after second update: 68
+
+Setting element at index 2 to 100...
+Sum of range [0, 7] after point update: 193
+
+Time Complexity:
+- Build: O(n)
+- Range Update: O(log n)
+- Range Query: O(log n)
+- Point Update: O(log n)
+
+Space Complexity: O(4n) for segment tree and lazy array
